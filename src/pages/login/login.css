@@ -1,0 +1,107 @@
+/* global */
+#button-login {
+    height: 50px;
+    border-radius: 10px;
+    border: none;
+}
+
+/* custom */
+#login {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100vh;
+    width: 100%;
+}
+
+#container-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 50%;
+    height: 100%;
+    padding: 5vw;
+    gap: 20px;
+}
+
+#container-left h3 {
+    color: var(--text-secondary);
+    font-weight: 200;
+    font-size: smaller;
+}
+
+#separator {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#separator hr {
+    width: 47%;
+}
+
+#form-login {
+    width: 100%;
+    gap: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+#input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+#input-group a {
+    text-decoration: none;
+}
+
+#forgotpss {
+    margin-top: 3px;
+    width: 100%;
+    color: var(--bg-30);
+    text-align: end;
+}
+
+#form-login input {
+    height: 50px;
+    padding: 0 15px;
+    outline: none;
+    border: 2px solid var(--text-secondary);
+    border-radius: 10px;
+}
+
+#form-login p,
+label {
+    font-size: small;
+}
+
+#form-login input:focus {
+    border: 2px solid var(--bg-10);
+}
+
+#form-login button {
+    background: var(--bg-30);
+    color: var(--text-main);
+    transition: all 0.1s ease;
+}
+
+#form-login button:hover {
+    background: var(--bg-10);
+    cursor: pointer;
+}
+
+#container-image {
+    background-color: green;
+    width: 50%;
+    height: 100%;
+}
+
+#bg-image-login {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    display: block;
+}

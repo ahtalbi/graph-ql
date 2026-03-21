@@ -1,0 +1,23 @@
+:root {
+    --bg-60: white;
+    --bg-30: rgb(7 61 68);
+    --bg-10: rgb(15, 117, 131);
+    --text-main: white;
+    --text-secondary: gray;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+}
+
+#app {
+    min-height: 100vh;
+    width: 100%;
+    background: var(--bg-60);
+}
