@@ -12,6 +12,7 @@
     justify-content: space-between;
     height: 100vh;
     width: 100%;
+    overflow: hidden;
 }
 
 #container-left {
@@ -94,7 +95,7 @@ label {
 }
 
 #container-image {
-    background-color: green;
+    position: relative;
     width: 50%;
     height: 100%;
 }
@@ -104,4 +105,114 @@ label {
     width: 100%;
     height: 100%;
     display: block;
+}
+
+#overlay-content {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 48px 44px;
+    gap: 40px;
+    color: #fff;
+    overflow: hidden;
+}
+
+#overlay-title {
+    font-size: clamp(1.4rem, 2.2vw, 1.9rem);
+    font-weight: 700;
+    line-height: 1.26;
+    margin: 0;
+}
+
+#testimonial-card {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(12px);
+    border-radius: 16px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+#testimonial-stars {
+    color: #f5c842;
+    font-size: 14px;
+    letter-spacing: 2px;
+}
+
+#testimonial-quote {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.88);
+    line-height: 1.65;
+    margin: 0;
+    font-style: italic;
+}
+
+#testimonial-author {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+#author-avatar {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    object-fit: cover;
+}
+
+#author-info {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+#author-name {
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+#author-role {
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.55);
+}
+
+#trusted-by {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#trusted-label {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: rgba(255, 255, 255, 0.4);
+}
+
+#trusted-logos {
+    display: flex;
+    gap: 20px;
+}
+
+#trusted-logos span {
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.65);
+}
+
+@media (max-width: 768px) {
+    #container-image {
+        display: none;
+    }
+
+    #container-left {
+        width: 100%;
+        padding: 10vw;
+    }
 }

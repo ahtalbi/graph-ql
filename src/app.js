@@ -1,7 +1,6 @@
 import { Loader } from "../packages/Loader.js";
 
 const app = document.getElementById("app");
-
 const PageLoader = new Loader(app);
 
 let auth = false;
