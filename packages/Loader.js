@@ -22,6 +22,7 @@ export class Loader {
             const res = await fetch(path);
             const js = await res.text();
             const script = document.createElement("script");
+            script.type = "module";
             script.dataset.script = true;
             script.textContent = js;
             document.querySelectorAll("[data-script]").forEach(e => e.remove());
