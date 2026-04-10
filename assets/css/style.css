@@ -21,3 +21,13 @@ body {
     width: 100%;
     background: var(--bg-60);
 }
+
+.custom-notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    color: white;
+    padding: 16px 24px;
+    border-radius: 8px;
+    z-index: 9999;
+}

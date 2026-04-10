@@ -5,12 +5,17 @@
         <!-- left side -->
         <form id="form-login">
             <div id="input-group">
-                <label for="username">Email</label>
+                <label for="username">Email or Username</label>
                 <input type="text" placeholder="Enter your email or username" name="username" id="username">
             </div>
             <div id="input-group">
                 <label for="username">Password</label>
-                <input type="password" placeholder="Enter your password" name="password" id="password">
+                <div class="password-field">
+                    <input type="password" placeholder="Enter your password" name="password" id="password">
+                    <button id="togglePassword" type="button" aria-label="Toggle password visibility">
+                        <img id="togglePasswordIcon" src="./assets/images/svgs/eye-svgrepo-com.svg" alt="">
+                    </button>
+                </div>
                 <a href="">
                     <p id="forgotpss">Forgot Password?</p>
                 </a>

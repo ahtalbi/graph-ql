@@ -7,6 +7,7 @@ export class GlobalEvent {
         if (!this.events[event]) {
             this.events[event] = [];
             document.addEventListener(event, (e) => {
+                if (event === "submit") e.preventDefault();
                 this.events[event].forEach(({id, fn}) => {
                     if(e.target.closest(id)) {
                         fn(e, e.target.closest(id));

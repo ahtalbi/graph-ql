@@ -55,6 +55,12 @@
     gap: 3px;
 }
 
+.password-field {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
 #input-group a {
     text-decoration: none;
 }
@@ -74,6 +80,11 @@
     border-radius: 10px;
 }
 
+.password-field input {
+    width: 100%;
+    padding-right: 48px;
+}
+
 #form-login p,
 label {
     font-size: small;
@@ -83,13 +94,42 @@ label {
     border: 2px solid var(--bg-10);
 }
 
-#form-login button {
+#togglePassword {
+    position: absolute;
+    top: 50%;
+    right: 12px;
+    transform: translateY(-50%);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+}
+
+#togglePassword img {
+    width: 20px;
+    height: 20px;
+    opacity: 0.7;
+    transition: opacity 0.15s ease, transform 0.15s ease;
+}
+
+#togglePassword:hover img,
+#togglePassword:focus-visible img {
+    opacity: 1;
+    transform: scale(1.08);
+}
+
+#button-login {
     background: var(--bg-30);
     color: var(--text-main);
     transition: all 0.1s ease;
 }
 
-#form-login button:hover {
+#button-login:hover {
     background: var(--bg-10);
     cursor: pointer;
 }
