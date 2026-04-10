@@ -16,13 +16,13 @@ export class Router {
             let url = new URL(event.destination.url);
 
             event.intercept({
-                handler: () => {
+                handler: async () => {
                     let fn = this.#Routes[url.pathname];
                     if (!fn) {
                         onError404();
                         return;
                     }
-                    fn({ url });
+                    await fn({ url });
                 }
             });
         });

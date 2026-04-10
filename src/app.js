@@ -1,4 +1,5 @@
 import { GlobalEvent } from "../packages/GlobalEvent.js";
+import { GraphQl } from "../packages/GraphQl.js";
 import { Loader } from "../packages/Loader.js";
 import { Router } from "../packages/Router.js";
 
@@ -7,8 +8,14 @@ const PageLoader = new Loader(app);
 const Global_Event = new GlobalEvent();
 const AppRouter = new Router();
 
-AppRouter.on("/", () => {
+AppRouter.on("/", async () => {
     if (!localStorage.getItem("jwt")) return AppRouter.navigate("/login", { history: "replace" });
+    try {
+        await GraphQl.SendReq("query { user {id}}");
+    } catch (_) {
+        localStorage.removeItem("jwt");
+        return AppRouter.navigate("/login", { history: "replace" });
+    }
     PageLoader.LoadPage("home");
 });
 
