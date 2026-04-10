@@ -1,0 +1,31 @@
+.gridContainer {
+    width: 100%;
+    padding: 30px;
+    background: green;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    grid-auto-rows: 150px;
+}
+
+.fc {
+    grid-column: span 2;
+    background: red;
+}
+
+.s1,
+.s2,
+.d1,
+.d2 {
+    background: red;
+}
+
+@media (max-width: 600px) {
+    .gridContainer {
+        grid-template-columns: 1fr;
+    }
+
+    .fc {
+        grid-column: span 1;
+    }
+}
