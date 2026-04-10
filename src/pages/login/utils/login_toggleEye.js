@@ -1,12 +1,11 @@
-const passwordInput = document.getElementById("password");
-const togglePasswordButton = document.getElementById("togglePassword");
-const togglePasswordIcon = document.getElementById("togglePasswordIcon");
+const passwordInp = document.getElementById("password");
+const togglePsButton = document.getElementById("togglePassword");
+const togglePsIcon = document.getElementById("togglePasswordIcon");
 
-if (passwordInput && togglePasswordButton && togglePasswordIcon) {
-    togglePasswordButton.addEventListener("click", () => {
-        const isPasswordHidden = passwordInput.type === "password";
-
-        passwordInput.type = isPasswordHidden ? "text" : "password";
-        togglePasswordIcon.src = isPasswordHidden ? "./assets/images/svgs/eye-closed-svgrepo-com.svg" : "./assets/images/svgs/eye-svgrepo-com.svg";
+if (passwordInp && togglePsButton && togglePsIcon) {
+    togglePsButton.addEventListener("click", () => {
+        const isPasswordHidden = passwordInp.type === "password";
+        passwordInp.type = isPasswordHidden ? "text" : "password";
+        togglePsIcon.src = isPasswordHidden ? "./assets/images/svgs/eye-closed-svgrepo-com.svg" : "./assets/images/svgs/eye-svgrepo-com.svg";
     });
 }

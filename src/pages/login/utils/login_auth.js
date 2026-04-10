@@ -1,7 +1,8 @@
+import { API_AUTH } from "../../../config/config.js";
 import { Login } from "./login_Class.js";
 
 Login.prototype.Auth = async function (username = "", password = "") {
-    let res = await fetch("https://learn.zone01oujda.ma/api/auth/signin", {
+    let res = await fetch(API_AUTH, {
         method: "POST",
         headers: { Authorization: `Basic ${btoa(username + ":" + password) }` },
     });
