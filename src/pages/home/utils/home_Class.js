@@ -1,37 +1,43 @@
 import { GraphQl } from "../../../../packages/GraphQl.js";
-import { AppRouter } from "../../../app.js";
 
 export class Home {
     async init() {
         try {
-            let res = await GraphQl.SendReq(`
+            const res = await GraphQl.SendReq(`
             query {
-              user {
-                login
-                email
-                firstName
-                lastName
-                avatarUrl    
-              }
+                user {
+                    login
+                    labels {
+                        labelName
+                    }
+                    attrs
+                }
             }`);
 
-            const userData = res?.user?.[0];
-            const infosCon = document.querySelector("#InfosCon");
+            const user = res?.user?.[0] || {};
+            const attrs = user?.attrs || {};
+            const cohort = attrs?.cohort || user?.labels?.[0]?.labelName || "-";
 
-            if (infosCon && userData) {
-                infosCon.innerHTML = `
-                    <div style="display: flex; align-items: center; gap: 20px; font-family: sans-serif; color: white;">
-                        ${userData.avatarUrl ? `<img src="${userData.avatarUrl}" alt="Avatar" style="width: 100px; height: 100px; border-radius: 50%; border: 3px solid #fff;">` : ''}
-                        <div>
-                            <h2 style="margin: 0 0 10px 0; font-size: 1.8rem;">${userData.firstName} ${userData.lastName || ''}</h2>
-                            <p style="margin: 5px 0;"><strong>Username:</strong> ${userData.login}</p>
-                            <p style="margin: 5px 0;"><strong>Email:</strong> ${userData.email}</p>
-                        </div>
+            const infosCon = document.querySelector("#InfosCon");
+            if (!infosCon) return;
+
+            infosCon.innerHTML = `
+                <div class="homeInfos">
+                    ${attrs.avatarUrl ? `<img src="${attrs.avatarUrl}" alt="Avatar" class="homeAvatar">` : ""}
+                    <div class="homeDetails">
+                        <h2 class="homeTitle">Informations</h2>
+                        <p class="homeInfoLine"><strong>First Name:</strong> ${attrs.firstName || "-"}</p>
+                        <p class="homeInfoLine"><strong>Last Name:</strong> ${attrs.lastName || "-"}</p>
+                        <p class="homeInfoLine"><strong>Cohort:</strong> ${cohort}</p>
+                        <p class="homeInfoLine"><strong>Date of Birth:</strong> ${attrs.dateOfBirth ? String(attrs.dateOfBirth).split("T")[0] : "-"}</p>
+                        <p class="homeInfoLine"><strong>Email:</strong> ${attrs.email || "-"}</p>
+                        <p class="homeInfoLine"><strong>City:</strong> ${attrs.addressCity || "-"}</p>
+                        <p class="homeInfoLine"><strong>Gender:</strong> ${attrs.gender || "-"}</p>
                     </div>
-                `;
-            }
+                </div>
+            `;
         } catch (_) {
-            
+
         }
     }
 }
