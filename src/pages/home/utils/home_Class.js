@@ -3,6 +3,14 @@ import { GraphQl } from "../../../../packages/GraphQl.js";
 export class Home {
     async init() {
         try {
+            const logoutBtn = document.querySelector("#logoutBtn");
+            if (logoutBtn) {
+                logoutBtn.addEventListener("click", () => {
+                    localStorage.removeItem("jwt");
+                    window.location.reload();
+                });
+            }
+
             const res = await GraphQl.SendReq(`
             query {
                 user {

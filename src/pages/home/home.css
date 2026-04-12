@@ -1,3 +1,37 @@
+.homeNavbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    background: #f4f5f7;
+    border-bottom: 2px solid rgba(7, 61, 68, 0.1);
+}
+
+.navLogo {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: rgb(7, 61, 68);
+    font-family: sans-serif;
+    letter-spacing: 1px;
+}
+
+.navLogout {
+    background: transparent;
+    color: #ef4444;
+    border: 2px solid #ef4444;
+    padding: 8px 18px;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.navLogout:hover {
+    background: #ef4444;
+    color: #fff;
+}
+
 .gridContainer {
     width: 100%;
     min-height: 100vh;
