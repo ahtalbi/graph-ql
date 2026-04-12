@@ -16,11 +16,13 @@
 .s2,
 .d1,
 .d2 {
-    background: red;
+    background: transparent;
 }
 
 .s1 {
     padding: 12px;
+    grid-column: span 2;
+    grid-row: span 3;
 }
 
 .chartCard {
@@ -69,6 +71,14 @@
 
 .chartDot {
     fill: #22d3ee;
+    z-index: 99999;
+}
+
+.chartLabel {
+    fill: #a1a1aa;
+    font-size: 12px;
+    text-anchor: end;
+    font-family: sans-serif;
 }
 
 .homeInfos {
@@ -100,7 +110,8 @@
         grid-template-columns: 1fr;
     }
 
-    .fc {
+    .fc,
+    .s1 {
         grid-column: span 1;
     }
 }
