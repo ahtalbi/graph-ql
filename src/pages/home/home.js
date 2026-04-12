@@ -1,8 +1,10 @@
 import { Home } from "./src/pages/home/utils/home_Class.js";
-import { HomeProgress } from "./src/pages/home/utils/home_progress.js";
+import "./src/pages/home/utils/home_progress.js";
+import "./src/pages/home/utils/home_audits.js";
+import "./src/pages/home/utils/home_skills.js";
 
 const homePage = new Home();
 await homePage.init();
-
-const homeProgress = new HomeProgress();
-await homeProgress.init();
+await homePage.initProgress();
+await homePage.initAudits();
+await homePage.initSkills();

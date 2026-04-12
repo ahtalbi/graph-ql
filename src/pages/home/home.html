@@ -1,11 +1,26 @@
 <div class="gridContainer">
-    <div id="InfosCon" class="fc"></div>
-    <div class="s1">
-
+    <div id="InfosCon" class="infoCardContainer baseCard"></div>
+    <div id="AuditCard" class="baseCard" style="min-height: 300px;">
+        <div class="chartHeader">
+            <h2 class="chartTitle">Audit Ratio</h2>
+        </div>
+        <div class="auditContainer">
+            <svg id="auditRatioSvg" viewBox="0 0 42 42" class="auditSvg"></svg>
+            <div id="auditLegend" class="auditLegend"></div>
+        </div>
     </div>
-    <div class="s2"></div>
-    <div id="Audits" class="d1"></div>
-    <div class="d2"></div>
+    <div id="SkillsCard" class="baseCard" style="min-height: 300px;">
+        <div class="chartHeader">
+            <h2 class="chartTitle">Skills</h2>
+        </div>
+        <div id="skillsContainer"></div>
+    </div>
+    <div class="progressCardContainer">
+        <div class="chartCard baseCard">
+            <div class="chartHeader">
+                <h2 class="chartTitle">XP Progress</h2>
+            </div>
+            <svg id="progressChartSvg" viewBox="0 0 1000 450" class="chartSvg"></svg>
+        </div>
+    </div>
 </div>
-<svg>
-</svg>

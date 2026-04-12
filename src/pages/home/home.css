@@ -1,38 +1,38 @@
 .gridContainer {
     width: 100%;
+    min-height: 100vh;
+    box-sizing: border-box;
     padding: 30px;
-    background: green;
+    background: #f4f5f7;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 1rem;
-    grid-auto-rows: 150px;
+    grid-auto-rows: minmax(150px, auto);
 }
 
-.fc {
+.baseCard {
+    background: rgb(7, 61, 68);
+    border-radius: 10px;
+    padding: 35px;
+    box-sizing: border-box;
+    color: #fff;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.infoCardContainer {
     grid-column: span 2;
+    display: flex;
+    align-items: center;
 }
 
-.s1,
-.s2,
-.d1,
-.d2 {
-    background: transparent;
-}
-
-.s1 {
-    padding: 12px;
+.progressCardContainer {
     grid-column: span 2;
-    grid-row: span 3;
+    min-height: 450px;
 }
 
 .chartCard {
     width: 100%;
     height: 100%;
-    background: #111827;
-    border-radius: 10px;
-    padding: 10px;
-    box-sizing: border-box;
-    color: #fff;
 }
 
 .chartHeader {
@@ -52,30 +52,30 @@
 }
 
 .chartAxis {
-    stroke: #d1d5db;
+    stroke: rgba(255, 255, 255, 0.3);
     stroke-width: 1.5;
 }
 
 .chartGrid {
-    stroke: #374151;
+    stroke: rgba(255, 255, 255, 0.1);
     stroke-width: 1;
 }
 
 .chartLine {
     fill: none;
-    stroke: #22d3ee;
+    stroke: #fff;
     stroke-width: 3;
     stroke-linecap: round;
     stroke-linejoin: round;
 }
 
 .chartDot {
-    fill: #22d3ee;
+    fill: #fff;
     z-index: 99999;
 }
 
 .chartLabel {
-    fill: #a1a1aa;
+    fill: rgba(255, 255, 255, 0.7);
     font-size: 12px;
     text-anchor: end;
     font-family: sans-serif;
@@ -83,35 +83,160 @@
 
 .homeInfos {
     display: flex;
-    align-items: flex-start;
-    gap: 20px;
+    align-items: center;
+    gap: 30px;
     font-family: sans-serif;
     color: white;
+    width: 100%;
 }
 
 .homeAvatar {
-    width: 100px;
-    height: 100px;
+    width: 120px;
+    height: 120px;
     border-radius: 50%;
     border: 3px solid #fff;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    flex-shrink: 0;
+}
+
+.homeDetails {
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
 }
 
 .homeTitle {
-    margin: 0 0 10px 0;
-    font-size: 1.6rem;
+    grid-column: 1 / -1;
+    margin: 0 0 5px 0;
+    font-size: 1.8rem;
+    color: #e5e7eb;
 }
 
 .homeInfoLine {
-    margin: 5px 0;
+    margin: 0;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 12px 15px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.95rem;
 }
+
+.homeInfoLine strong {
+    color: rgba(255, 255, 255, 0.7);
+    font-weight: 500;
+}
+
+.auditContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: calc(100% - 30px);
+    margin-top: 15px;
+    gap: 20px;
+}
+
+.auditSvg {
+    width: 200px;
+    height: 200px;
+    overflow: visible;
+}
+
+.auditCenterText {
+    font-size: 8px;
+    font-weight: bold;
+    fill: #fff;
+    text-anchor: middle;
+    font-family: sans-serif;
+}
+
+.auditLegend {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 30px;
+    font-family: sans-serif;
+    font-weight: bold;
+}
+
+.auditLegendItem {
+    font-size: 1rem;
+}
+
+.skillsWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+    margin-top: 15px;
+    max-height: 250px;
+    overflow-y: auto;
+    padding-right: 5px;
+}
+
+.skillsWrapper::-webkit-scrollbar {
+    width: 6px;
+}
+.skillsWrapper::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 4px;
+}
+.skillsWrapper::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+}
+
+.skillRow {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.skillHeader {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.9);
+    font-family: sans-serif;
+    font-weight: 500;
+}
+
+.skillBarBackground {
+    width: 100%;
+    height: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.skillBarFill {
+    height: 100%;
+    background: #3b82f6;
+    border-radius: 4px;
+}
+
 
 @media (max-width: 600px) {
     .gridContainer {
         grid-template-columns: 1fr;
     }
 
-    .fc,
-    .s1 {
+    .infoCardContainer,
+    .progressCardContainer {
         grid-column: span 1;
+    }
+
+    .homeInfos {
+        flex-direction: column;
+        text-align: center;
+        gap: 20px;
+    }
+
+    .homeDetails {
+        width: 100%;
+        grid-template-columns: 1fr;
     }
 }
