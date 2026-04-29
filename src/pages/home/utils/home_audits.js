@@ -32,8 +32,6 @@ Home.prototype.initAudits = async function() {
 };
 
 Home.prototype.buildAuditChart = function(succeeded, failed) {
-    console.log(succeeded, failed);
-    
     const svg = document.querySelector("#auditRatioSvg");
     if (!svg) return;
 

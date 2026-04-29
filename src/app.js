@@ -12,9 +12,13 @@ AppRouter.on("/", async () => {
     if (!localStorage.getItem("jwt")) return AppRouter.navigate("/login", { history: "replace" });
     try {
         await GraphQl.SendReq("query { user {id}}");
-    } catch (_) {
-        localStorage.removeItem("jwt");
-        return AppRouter.navigate("/login", { history: "replace" });
+    } catch (err) {
+        if (err.message === "AUTH_ERROR") {
+            localStorage.removeItem("jwt");
+            return AppRouter.navigate("/login", { history: "replace" });
+        }
+        // Non-auth errors (like network issues) won't trigger a redirect or logout.
+        console.warn("Session check skipped:", err.message);
     }
     PageLoader.LoadPage("home");
 });

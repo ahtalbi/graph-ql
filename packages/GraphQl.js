@@ -4,15 +4,30 @@ export class GraphQl {
     static async SendReq(query) {
         const jwt = localStorage.getItem("jwt");
 
-        let res = await fetch(API_GRAPHQL, {
-            method: "POST",
-            headers: { "Authorization": `Bearer ${jwt}` },
-            body: JSON.stringify({ query })
-        })
+        let res;
+        try {
+            res = await fetch(API_GRAPHQL, {
+                method: "POST",
+                headers: { "Authorization": `Bearer ${jwt}` },
+                body: JSON.stringify({ query })
+            });
+        } catch (e) {
+            throw new Error("NETWORK_ERROR");
+        }
 
-        res = await res.json();
-        if (res.errors) throw new Error(res.errors[0].message);
+        if (res.status === 401 || res.status === 403) {
+            throw new Error("AUTH_ERROR");
+        }
 
-        return res.data;
+        const json = await res.json();
+        if (json.errors) {
+            const msg = json.errors[0].message.toLowerCase();
+            if (msg.includes("could not verify jwt")) {
+                throw new Error("AUTH_ERROR");
+            }
+            throw new Error(json.errors[0].message);
+        }
+
+        return json.data;
     };
 }
