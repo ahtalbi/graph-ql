@@ -52,8 +52,9 @@ Home.prototype.buildAuditChart = function(succeeded, failed) {
 
     svg.replaceChildren();
 
-    // r = 100 / (2 * PI)
-    const r = 15.915494309189533;
+    const r = 20;
+    const mohit=2*Math.PI*r
+    
     const center = 21;
 
     // Red Circle
@@ -70,8 +71,8 @@ Home.prototype.buildAuditChart = function(succeeded, failed) {
         fill: "transparent",
         stroke: "green",
         "stroke-width": 4,
-        "stroke-dasharray": `${sucRatio} ${100 - sucRatio}`,
-        "stroke-dashoffset": 25 // Start at top
+        "stroke-dasharray": `${sucRatio*mohit/100} ${(100-sucRatio)*mohit/100 }`,
+        "stroke-dashoffset": 31
     });
     
     svg.appendChild(successCircle);
