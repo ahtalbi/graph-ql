@@ -42,15 +42,14 @@ Home.prototype.buildChart = function(data) {
     const maxXP = data[data.length - 1].xp;
     const maxI = data.length - 1 || 1;
 
-    // Step 1: Canvas size and padding
     const W = 1000, H = 450;
     const PAD = { top: 30, right: 30, bottom: 40, left: 70 };
     const innerW = W - PAD.left - PAD.right;
     const innerH = H - PAD.top - PAD.bottom;
 
-    // Step 2: Converters
-    const px = i  => PAD.left + (i / maxI) * innerW;   // index -> X pixel
-    const py = xp => PAD.top + innerH - (xp / maxXP) * innerH; // xp -> Y pixel
+    // functions which desides the place of the dots in the svg 
+    const px = i  => PAD.left + (i / maxI) * innerW;
+    const py = xp => PAD.top + innerH - (xp / maxXP) * innerH;
 
     const createSVGElement = (tag, attrs) => {
         const el = document.createElementNS("http://www.w3.org/2000/svg", tag);
@@ -62,12 +61,14 @@ Home.prototype.buildChart = function(data) {
 
     svg.replaceChildren();
 
+    // the vertical line
     svg.appendChild(createSVGElement("line", {
         x1: PAD.left, y1: PAD.top, 
         x2: PAD.left, y2: H - PAD.bottom, 
         class: "chartAxis"
     }));
 
+    // the horizontal line
     svg.appendChild(createSVGElement("line", {
         x1: PAD.left, y1: H - PAD.bottom, 
         x2: W - PAD.right, y2: H - PAD.bottom, 

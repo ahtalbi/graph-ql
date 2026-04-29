@@ -36,7 +36,6 @@ Home.prototype.buildSkillsChart = function(data) {
     wrapper.className = "skillsWrapper";
 
     for (const item of data) {
-        // Example: 'skill_algo' -> 'Algo'
         let name = item.skillType.replace("skill_", "");
         name = name.charAt(0).toUpperCase() + name.slice(1);
         

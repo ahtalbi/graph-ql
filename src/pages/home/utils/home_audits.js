@@ -32,6 +32,8 @@ Home.prototype.initAudits = async function() {
 };
 
 Home.prototype.buildAuditChart = function(succeeded, failed) {
+    console.log(succeeded, failed);
+    
     const svg = document.querySelector("#auditRatioSvg");
     if (!svg) return;
 
@@ -50,48 +52,42 @@ Home.prototype.buildAuditChart = function(succeeded, failed) {
 
     svg.replaceChildren();
 
-    // r = 100 / (2 * PI) to make circumference exactly 100
+    // r = 100 / (2 * PI)
     const r = 15.915494309189533;
     const center = 21;
 
-    // Draw Fail (Red background)
+    // Red Circle
     svg.appendChild(createSVGElement("circle", {
         cx: center, cy: center, r: r,
         fill: "transparent",
-        stroke: "#ef4444", // Red
+        stroke: "red",
         "stroke-width": 4
     }));
 
-    // Draw Success (Green foreground)
+    // Green circle
     const successCircle = createSVGElement("circle", {
         cx: center, cy: center, r: r,
         fill: "transparent",
-        stroke: "#22c55e", // Green
+        stroke: "green",
         "stroke-width": 4,
         "stroke-dasharray": `${sucRatio} ${100 - sucRatio}`,
         "stroke-dashoffset": 25 // Start at top
     });
     
-    // Add tooltip using title
-    const sucTitle = createSVGElement("title", {});
-    sucTitle.textContent = `Success: ${Math.round(sucRatio)}%`;
-    successCircle.appendChild(sucTitle);
-
     svg.appendChild(successCircle);
 
-    // Update legend
     const legend = document.querySelector("#auditLegend");
     if (legend) {
         legend.replaceChildren();
 
         const sDiv = document.createElement("div");
         sDiv.className = "auditLegendItem";
-        sDiv.style.color = "#22c55e";
+        sDiv.style.color = "green";
         sDiv.textContent = `Succeeded: ${succeeded}`;
         
         const fDiv = document.createElement("div");
         fDiv.className = "auditLegendItem";
-        fDiv.style.color = "#ef4444";
+        fDiv.style.color = "red";
         fDiv.textContent = `Failed: ${failed}`;
 
         legend.appendChild(sDiv);
